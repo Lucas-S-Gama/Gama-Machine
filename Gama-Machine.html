@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gama Machine</title>
+
+    <link rel="stylesheet" href="gama.css">
+</head>
+<body>
+    <!-- Colocar um fundo animado de batalha de rima -->
+     <!-- buttons interativos e partes aparecendo com animação -->
+    <div class="corpo">
+        <div class="header">
+            <h1 class="titulo">⛈︎ GAMA - MACHINE ⛈︎</h1>
+
+            <div class="menu">
+                <button class="itens_menus" onclick="entrarCalculadora()">Calculadora</button>
+                <button class="itens_menus" onclick="entrarSobre()">Sobre</button>
+                <button class="itens_menus" onclick="entrarConversor()">Conversor</button>
+            </div>
+        </div>
+        <div class="conteudo">
+            <div class="calculadora" id="tela_calculadora">
+                <p>CALCULADORA</p>
+            </div>
+            
+            <div class="sobre" id="tela_sobre">
+                <p class="sobre_titulo">SOBRE</p>
+                <p class="sobre_descricao">Página criada para conversão e calculo de numeros de diferentes bases, onde poderam ser acessadas no menu.<br>- Lucas S. Gama</p>
+                <img class="ImagemComputador" src="https://images.vexels.com/media/users/3/323638/isolated/preview/739bbab141adde7265e035305f819b81-projeto-de-curso-de-um-computador-pessoal.png" alt="Top">
+            </div>
+
+            <div class="conversor" id="tela_conversor">
+                <div class="titulo_instrucao">
+                    <p class="conversor_titulo">CONVERSOR</p>
+                    <p class="conversor_instrucao">Preencha apenas UM dos campos e clique em CONVERTER, para usar denovo clique em LIMPAR.</p>
+                </div>
+                <div class="BotoesConversor">
+                    <!-- COLOCAR ANIMAÇÃO NESSES BOTÕES -->
+                     <!-- Colocar restrições em outros inputs quando um for enviado -->
+                    <button onclick="converter()">CONVERTER</button>
+                    <button>LIMPAR</button>
+                </div>
+                <br><br><br>
+                <div class="Conversao">
+                    <div class="conversao_inputs">
+                        <div class="caixaConversor">
+                            <!-- IDEIA DE MUDAR A COR DO TITULO DO INPUT QUE RECEBEU A COR (utilizar a validação) -->
+                            <span>BINARIO</span>
+                            <input id="ipt_binario" type="text" placeholder="BINARIO">
+                        </div>
+                        <div class="caixaConversor">
+                            <span>OCTAL</span>
+                            <input id="ipt_octal" type="text" placeholder="OCTAL">
+                        </div>
+                        <div class="caixaConversor">
+                            <span>DECIMAL</span>
+                            <input id="ipt_decimal" type="text" placeholder="DECIMAL">
+                        </div>
+                        <div class="caixaConversor">
+                            <span>HEXADECIMAL</span>
+                            <input id="ipt_hexadecimal" type="text" placeholder="HEXADECIMAL">
+                        </div>
+                    </div>
+                    <P class="historio_conversor">Histórico:</P>
+                    <div class="resultado_inputs" id="resultado_inputs">
+                        <div class="CaixaResultado">
+                            <span>BINARIO</span>
+                            <span>OCTAL</span>
+                            <span>BINARIO</span>
+                            <span>BINARIO</span>
+                        </div>
+                        <div class="CaixaResultado">
+                            <span>BINARIO</span>
+                            <span>OCTAL</span>
+                            <span>BINARIO</span>
+                            <span>BINARIO</span>
+                        </div>
+                        <div class="CaixaResultado">
+                            <span>BINARIO</span>
+                            <span>OCTAL</span>
+                            <span>BINARIO</span>
+                            <span>BINARIO</span>
+                        </div>
+                        <div class="CaixaResultado">
+                            <span>BINARIO</span>
+                            <span>OCTAL</span>
+                            <span>BINARIO</span>
+                            <span>BINARIO</span>
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+                <!-- Colocar 4 inputs possiveis de serem inseridos, falar para um usuario preencher apenas um e ir adicionando em 1 historico -->
+            </div>
+        </div>
+    </div>
+</body>
+    <script>
+        // LIMPAR CAMPOS QUANDO CLICAR EM CONVERTER
+        let TelaCalculadora = tela_calculadora;
+        let TelaSobre = tela_sobre;
+        let TelaConversor = tela_conversor;
+
+        function entrarCalculadora() {
+            tela_calculadora.style.display = "flex";
+            tela_conversor.style.display = "none";
+            tela_sobre.style.display = "none";
+        }
+
+        function entrarSobre() {
+            tela_calculadora.style.display = "none";
+            tela_conversor.style.display = "none";
+            tela_sobre.style.display = "flex";
+        }
+
+        function entrarConversor() {
+            tela_calculadora.style.display = "none";
+            tela_conversor.style.display = "flex";
+            tela_sobre.style.display = "none";
+        }
+    
+        let ValidacaoDeCampo = 0;
+        let Error = false;
+
+        function converter() {
+            let ValorBinario = Number(ipt_binario.value);
+            let ValorOctal = Number(ipt_octal.value);
+            let ValorDecimal = Number(ipt_decimal.value);
+            let ValorHexadecimal = Number(ipt_hexadecimal.value);
+
+            // Validação se apenas um campo está preenchido
+            if (ValorBinario > 0 ) {
+                ValidacaoDeCampo += 1;
+            }
+            if (ValorOctal > 0) {
+                ValidacaoDeCampo += 1;
+            }
+            if (ValorDecimal > 0) {
+                ValidacaoDeCampo += 1;
+            }
+            if(ValorHexadecimal > 0) {
+                ValidacaoDeCampo += 1;
+            }
+            if(ValidacaoDeCampo > 1) {
+                console.log("INSIRA UM CAMPO")
+                ValidacaoDeCampo = 0;
+                return  resultado_inputs.innerHTML += `
+                <div class="CaixaResultado">
+                    <span>ERRO</span>
+                    <span>ERRO</span>
+                    <span>ERRO</span>
+                    <span>ERRO</span>
+                </div>
+                `
+            }
+            ValidacaoDeCampo = 0;
+            // Validação Finalizada
+
+            // FAZER IFS para cada caso de uso, se for o binario, octal EXEMPLO:
+
+            // FAZER validacao de letra e numero no binario, hexadecimal e octal
+            if (ValorBinario > 0) {
+                ValorOctalConvertido = ValorBinario.toString(8);
+                ValorHexadecimalConvertido = ValorBinario.toString(16);
+                ValorDecimalConvertido = ValorBinario.toString(10);
+                
+                resultado_inputs.innerHTML +=  `
+                <div class="CaixaResultado">
+                    <span>${ValorBinario}</span>
+                    <span>${ValorOctalConvertido}</span>
+                    <span>${ValorDecimalConvertido}</span>
+                    <span>${ValorHexadecimalConvertido}</span>
+                </div>
+                `
+            }
+
+            if (ValorOctal > 0) {
+                ValorBinarioConvertido = ValorOctal.toString(2);
+                ValorHexadecimalConvertido = ValorOctal.toString(16);
+                ValorDecimalConvertido = ValorOctal.toString(10);
+                
+                resultado_inputs.innerHTML +=  `
+                <div class="CaixaResultado">
+                    <span>${ValorBinarioConvertido}</span>
+                    <span>${ValorOctal}</span>
+                    <span>${ValorDecimalConvertido}</span>
+                    <span>${ValorHexadecimalConvertido}</span>
+                </div>
+                `
+            }
+
+            if (ValorDecimal > 0) {
+                ValorOctalConvertido = ValorDecimal.toString(8);
+                ValorHexadecimalConvertido = ValorDecimal.toString(16);
+                ValorBinarioConvertido = ValorDecimal.toString(2);
+                
+                resultado_inputs.innerHTML +=  `
+                <div class="CaixaResultado">
+                    <span>${ValorBinarioConvertido}</span>
+                    <span>${ValorOctalConvertido}</span>
+                    <span>${ValorDecimal}</span>
+                    <span>${ValorHexadecimalConvertido}</span>
+                </div>
+                `
+            }
+
+            if (ValorHexadecimal > 0) {
+                ValorOctalConvertido = ValorHexadecimal.toString(8);
+                ValorBinarioConvertido = ValorHexadecimal.toString(2);
+                ValorDecimalConvertido = ValorHexadecimal.toString(10);
+                
+                resultado_inputs.innerHTML +=  `
+                <div class="CaixaResultado">
+                    <span>${ValorBinario}</span>
+                    <span>${ValorOctalConvertido}</span>
+                    <span>${ValorDecimalConvertido}</span>
+                    <span>${ValorHexadecimalConvertido}</span>
+                </div>
+                `
+            }
+
+
+            
+        }
+
+
+
+
+        // UM DIA JAZ UMA CALCULATOR
+    </script>
+</html>

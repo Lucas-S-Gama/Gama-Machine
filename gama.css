@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Datatype:wght@100..900&display=swap');
+
+/* =============== */
+/*       CORPO     */
+/* =============== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Datatype", monospace;
+}
+
+.corpo {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =============== */
+/*       CORPO     */
+/* =============== */
+
+
+/* =============== */
+/*       NAVBAR     */
+/* =============== */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px black solid;
+    padding: 2px;
+    margin: 5px;
+}
+
+.titulo {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: 1px solid black;
+}
+
+.menu {
+    display: flex;
+    border: 1px solid black;
+    justify-content: center;
+    width: 100%;
+    gap: 5%;
+}
+
+.itens_menus {
+    width: 15%;
+    height: 7vh;
+    font-size: 2vh;
+    background-color: white;
+    color: black;
+    border: 1px black solid;
+    border-radius: 5px 0 5px 0;
+    transition: 1s;
+}
+
+.itens_menus:hover {
+    color: white;
+    background-color: black;
+    border: 1px white solid;
+    border-radius: 0 5px 0 5px;
+}
+
+/* =============== */
+/*       NAVBAR     */
+/* =============== */
+
+
+
+.conteudo {
+    border: 1px solid black;
+    margin: 10px;
+    
+}
+
+
+/* =============== */
+/*    CALCULADORA     */
+/* =============== */
+
+.calculadora {
+    display: none;
+}
+
+/* =============== */
+/*    CALCULADORA     */
+/* =============== */
+
+
+/* =============== */
+/*      SOBRE      */
+/* =============== */
+
+.sobre {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+
+}
+
+.sobre_titulo {
+    font-size: 30px;
+    font-weight: bolder;
+    letter-spacing: 5px;
+    border: 1px solid black;
+}
+
+.sobre_descricao {
+    font-size: 20px;
+    text-align: justify;
+    width: 50%;
+    border: 1px solid black;
+}
+
+.ImagemComputador {
+    width: 23%;
+}
+
+/* =============== */
+/*      SOBRE      */
+/* =============== */
+
+
+/* =============== */
+/*    CONVERSOR    */
+/* =============== */
+
+.conversor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid black;
+
+}
+
+/* =============== */
+/* CONVERSOR - CIMA */
+/* =============== */
+
+.titulo_instrucao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+
+}
+
+.conversor_titulo {
+    font-size: 30px;
+    font-weight: bolder;
+    letter-spacing: 5px;
+    border: 1px solid black;
+}
+
+.conversor_instrucao {
+    font-size: 20px;
+    text-align: justify;
+    width: 60%;
+    border: 1px solid black;
+}
+
+.BotoesConversor {
+    display: flex;
+    justify-content: center;
+    gap: 15%;
+    border: 1px black solid;
+}
+.BotoesConversor button {
+    height: 7vh;
+    width: 20%;
+    font-size: 2vh;
+    background-color: white;
+    color: black;
+    border: 1px black solid;
+    border-radius: 5px 0 5px 0;
+}
+/* =============== */
+/* CONVERSOR - CIMA */
+/* =============== */
+
+
+/* =============== */
+/* CONVERSOR - Baixo */
+/* =============== */
+
+.Conversao {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conversao_inputs {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 80%;
+}
+
+.caixaConversor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid black;
+    width: 100%;
+}
+
+.caixaConversor span {
+    border: 1px solid black;
+    font-size: 17px;
+
+}
+
+.caixaConversor input {
+    border: 1px solid black;
+    width: 70%;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.caixaConversor input::placeholder {
+    text-align: center;
+}
+
+.historio_conversor {
+    border: 1px black solid;
+    width: 95%;
+}
+
+
+.resultado_inputs {
+    border: 1px black solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.CaixaResultado {
+    display: flex;
+    flex-direction: wrap;
+    gap: 15%;
+    border: 1px black solid;
+    width: 75%;
+    justify-content: center;
+}
+
+.CaixaResultado span {
+    font-size: 17px;
+    width: 80%;
+    border: 1px black solid;
+    text-align: center;
+}
+
+/* =============== */
+/* CONVERSOR - Baixo */
+/* =============== */
+
+/* =============== */
+/*    CONVERSOR    */
+/* =============== */
