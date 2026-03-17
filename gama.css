@@ -98,7 +98,7 @@ body {
     display: none;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 
 }
 
@@ -169,6 +169,7 @@ body {
     gap: 15%;
     border: 1px black solid;
 }
+
 .BotoesConversor button {
     height: 7vh;
     width: 20%;
@@ -177,6 +178,14 @@ body {
     color: black;
     border: 1px black solid;
     border-radius: 5px 0 5px 0;
+    transition: 1s;
+}
+
+.BotoesConversor button:hover {
+    background-color: black;
+    border: 1px white solid;
+    color: white;
+    border-radius: 0 5px 0 5px;
 }
 /* =============== */
 /* CONVERSOR - CIMA */
