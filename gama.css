@@ -7,9 +7,13 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Datatype", monospace;
+    display: flex;
+    justify-content: center;
 }
 
 .corpo {
+    /* Tirar essa borda */
+    width: 99%;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
@@ -28,19 +32,16 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px black solid;
     padding: 2px;
     margin: 5px;
 }
 
 .titulo {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    border: 1px solid black;
 }
 
 .menu {
     display: flex;
-    border: 1px solid black;
     justify-content: center;
     width: 100%;
     gap: 5%;
@@ -83,6 +84,118 @@ body {
 
 .calculadora {
     display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo_calculadora {
+    font-size: 30px;
+    font-weight: bolder;
+    letter-spacing: 5px;    
+}
+
+.Inserir-template {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 10px; 
+    height: 100px;
+}
+
+.template-spans {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    gap: 19%;
+    height: 40%;
+}
+
+.template-spans span {
+    width: 27%;
+    text-align: center;
+}
+
+.template-spans select {
+    text-align: center;
+    width: 27%;
+    border: 1px solid black;
+}
+
+.template-inputs {
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    gap: 19%;
+    height: 40%;
+}
+
+.template-inputs input {
+    text-align: center;
+    width: 25%;
+    border: 1px solid black;
+}
+
+.template-inputs select {
+    text-align: center;
+    width: 25%;
+    border: 1px solid black;
+}
+
+.calculadora_botoes {
+    margin-top: 35px;
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    gap: 20%;
+}
+
+.calculadora_botoes button{
+    height: 7vh;
+    width: 30%;
+    font-size: 2vh;
+    background-color: white;
+    color: black;
+    border: 1px black solid;
+    border-radius: 5px 0 5px 0;
+    transition: 1s;
+}
+
+.calculadora_botoes button:hover {
+    background-color: black;
+    border: 1px white solid;
+    color: white;
+    border-radius: 0 5px 0 5px;
+}
+
+.historíco_calculadora {
+    border-top: 2px solid black;
+    margin-top: 30px;
+    padding-top: 10px;
+    width: 50%;
+}
+
+.resultados_calculadora {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 50%;
+    align-items: center;
+}
+
+.resultado-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 5%;
+    border-top: 1px dashed black;
+    padding-top: 10px;
+}
+
+.resultado-box span {
+    display: flex;
+    justify-content: center;
+    width: 15%;
 }
 
 /* =============== */
@@ -95,25 +208,21 @@ body {
 /* =============== */
 
 .sobre {
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    /* border: 1px solid black; */
-
 }
 
 .sobre_titulo {
     font-size: 30px;
     font-weight: bolder;
     letter-spacing: 5px;
-    border: 1px solid black;
 }
 
 .sobre_descricao {
     font-size: 20px;
     text-align: justify;
     width: 50%;
-    border: 1px solid black;
 }
 
 .ImagemComputador {
@@ -130,11 +239,9 @@ body {
 /* =============== */
 
 .conversor {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid black;
-
 }
 
 /* =============== */
@@ -145,29 +252,24 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid black;
-
 }
 
 .conversor_titulo {
     font-size: 30px;
     font-weight: bolder;
     letter-spacing: 5px;
-    border: 1px solid black;
 }
 
 .conversor_instrucao {
     font-size: 20px;
     text-align: justify;
     width: 60%;
-    border: 1px solid black;
 }
 
 .BotoesConversor {
     display: flex;
     justify-content: center;
     gap: 15%;
-    border: 1px black solid;
 }
 
 .BotoesConversor button {
@@ -197,14 +299,12 @@ body {
 /* =============== */
 
 .Conversao {
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .conversao_inputs {
-    border: 1px solid black;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -216,18 +316,15 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    border: 1px solid black;
     width: 100%;
 }
 
 .caixaConversor span {
-    border: 1px solid black;
     font-size: 17px;
-
 }
 
 .caixaConversor input {
-    border: 1px solid black;
+    border: 2px solid black;
     width: 70%;
     height: 30px;
     border-radius: 3px;
@@ -238,13 +335,12 @@ body {
 }
 
 .historio_conversor {
-    border: 1px black solid;
+    border-top: 2px solid black;
     width: 95%;
 }
 
 
 .resultado_inputs {
-    border: 1px black solid;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -256,15 +352,18 @@ body {
     display: flex;
     flex-direction: wrap;
     gap: 15%;
-    border: 1px black solid;
     width: 75%;
     justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
 }
 
 .CaixaResultado span {
     font-size: 17px;
     width: 80%;
-    border: 1px black solid;
+    border: 2px black solid;
     text-align: center;
 }
 

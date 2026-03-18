@@ -22,7 +22,56 @@
         </div>
         <div class="conteudo">
             <div class="calculadora" id="tela_calculadora">
-                <p>CALCULADORA</p>
+                <p class="titulo_calculadora">CALCULADORA</p>
+                
+                <div class="Inserir-template">
+                    <div class="template-spans">
+                        <select id="ipt_base_n1">
+                            <option value="N1decimal">Decimal</option>
+                            <option value="N1binario">Binario</option>
+                            <option value="N1octal">Octal</option>
+                            <option value="N1hexadecimal">Hexadecimal</option>
+                        </select>
+                        <span>Preencha os campos!</span>
+                        <select id="ipt_base_n2">
+                            <option value="N2decimal">Decimal</option>
+                            <option value="N2binario">Binario</option>
+                            <option value="N2octal">Octal</option>
+                            <option value="N2hexadecimal">Hexadecimal</option>
+                        </select>
+                    </div>
+                    <div class="template-inputs">
+                        <input type="text" placeholder="Numero 1" id="ipt_n1">
+                        <select id="ipt_operacao">
+                            <option value="somar">+</option>
+                            <option value="subtrair">-</option>
+                            <option value="dividir">/</option>
+                            <option value="multiplicar">x</option>
+                        </select>
+                        <input type="text" placeholder="Número 2" id="ipt_n2"> 
+                    </div>
+                </div>
+                <div class="calculadora_botoes">
+                    <button onclick="calcular()">CALCULAR</button>
+                        <select id="ipt_base_resposta">
+                            <option value="RESdecimal" disabled selected>Base da Resposta</option>
+                            <option value="RESdecimal">Decimal</option>
+                            <option value="RESbinario">Binario</option>
+                            <option value="RESoctal">Octal</option>
+                            <option value="REShexadecimal">Hexadecimal</option>
+                        </select>
+                    <button onclick="limparCalculadora()">LIMPAR</button>
+                </div>
+                <p class="historíco_calculadora">Historíco: </p>
+                <div class="resultados_calculadora" id="ipt_resultados_calculadora">
+                    <!-- <div class="resultado-box">
+                        <span>18<p>2</p></span>
+                        <span>+</span>
+                        <span>20<p>8</p></span>
+                        <span>=</span>
+                        <span>38<p>10</p></span>
+                    </div> -->
+                </div>
             </div>
             
             <div class="sobre" id="tela_sobre">
@@ -85,7 +134,7 @@
         let InputDecimal = ipt_decimal;
         let InputHexadecimal = ipt_hexadecimal;
         
-
+        // FUNÇÕES MENU
         function entrarCalculadora() {
             tela_calculadora.style.display = "flex";
             tela_conversor.style.display = "none";
@@ -103,7 +152,9 @@
             tela_conversor.style.display = "flex";
             tela_sobre.style.display = "none";
         }
-    
+        // FUNÇÕES MENU
+
+        // FUNÇÕES CONVERTER
         let ValidacaoDeCampo = 0;
         
         function converter() {
@@ -169,7 +220,7 @@
                 resultado_inputs.innerHTML +=  `
                 <div class="CaixaResultado">
                     <span>${ValorBinarioConvertido}</span>
-                    <span>${ValorOctal}</span>
+                    <span>${ValorOctalConvertido}</span>
                     <span>${ValorDecimalConvertido}</span>
                     <span>${ValorHexadecimalConvertido}</span>
                 </div>
@@ -221,7 +272,108 @@
             InputDecimal.value = '';
             InputHexadecimal.value = '';
         }
+        // FUNÇÕES CONVERTER
+        
+        function calcular() {
+            let BaseN1 = ipt_base_n1.value;
+            let BaseN1Texto = 0;
+            let BaseN2 = ipt_base_n2.value;
+            let BaseN2Texto = 0;
+            let BaseResposta = ipt_base_resposta.value;
+            let BaseRespostaTexto = 0
+            let operacao = ipt_operacao.value;
+            let n1 = Number(ipt_n1.value);
+            let n2 = Number(ipt_n2.value);
 
-        // UM DIA JAZ UMA CALCULATOR
+            let ValorConversaoN1 = 0;
+            let ValorConversaoN2 = 0;
+
+            let ValorDecimalSoma = 0;
+            let ValorResultado = 0;
+
+            let OperacaoTexto = '';
+
+            if (BaseN1 == 'N1decimal') {
+                ValorConversaoN1 = Number(n1);
+                BaseN1Texto = 10;
+            } else if (BaseN1 == 'N1binario') {
+                ValorConversaoN1 = parseInt(n1, 2);
+                BaseN1Texto = 2;
+            } else if (BaseN1 == 'N1octal') {
+                ValorConversaoN1 = parseInt(n1, 8);
+                BaseN1Texto = 8;
+            } else if (BaseN1 == 'N1hexadecimal') {
+                ValorConversaoN1 = parseInt(n1, 16);
+                BaseN1Texto = 16;
+            } else {
+                return alert("Coloque uma base válida")
+            }
+
+            if (BaseN2 == 'N2decimal') {
+                ValorConversaoN2 = Number(n2);
+                BaseN2Texto = 10;
+            } else if (BaseN2 == 'N2binario') {
+                ValorConversaoN2 = parseInt(n2, 2);
+                BaseN2Texto = 2;
+            } else if (BaseN2 == 'N2octal') {
+                ValorConversaoN2 = parseInt(n2, 8);
+                BaseN2Texto = 8;
+            } else if (BaseN2 == 'N2hexadecimal') {
+                ValorConversaoN2 = parseInt(n2, 16);
+                BaseN2Texto = 16;
+            } else {
+                return alert("Coloque uma base válida")
+            }
+
+            if (operacao == 'somar') {
+                ValorDecimalSoma = ValorConversaoN1 + ValorConversaoN2;
+                OperacaoTexto = '+';
+            } else if (operacao == 'subtrair') {
+                ValorDecimalSoma = ValorConversaoN1 - ValorConversaoN2;
+                OperacaoTexto = '-';
+            } else if (operacao == 'dividir') {
+                ValorDecimalSoma = ValorConversaoN1 / ValorConversaoN2;
+                OperacaoTexto = '/';
+            } else if (operacao == 'multiplicar') {
+                ValorDecimalSoma = ValorConversaoN1 * ValorConversaoN2;
+                OperacaoTexto = '*';
+            } else {
+                return alert("Coloque um valor válido")
+            }
+
+            if (BaseResposta == "RESdecimal") {
+                ValorResultado = ValorDecimalSoma.toString(10);
+                BaseRespostaTexto = 10;
+            } else if (BaseResposta == "RESbinario") {
+                ValorResultado = ValorDecimalSoma.toString(2);
+                BaseRespostaTexto = 2;
+            } else if (BaseResposta == "RESoctal") {
+                ValorResultado = ValorDecimalSoma.toString(8);
+                BaseRespostaTexto = 8;
+            } else if (BaseResposta == "REShexadecimal") {
+                ValorResultado = ValorDecimalSoma.toString(16);
+                BaseRespostaTexto = 16;
+            } else {
+                return alert("Coloque um valor válido")
+            }
+
+            
+
+            ipt_resultados_calculadora.innerHTML += `
+            <div class="resultado-box">
+                <span>${n1}<p>${BaseN1Texto}</p></span>
+                <span>${OperacaoTexto}</span>
+                <span>${n2}<p>${BaseN2Texto}</p></span>
+                <span>=</span>
+                <span>${ValorResultado}<p>${BaseRespostaTexto}</p></span>
+            </div>`
+
+        }
+        
+        function limparCalculadora() {
+            ipt_resultados_calculadora.innerHTML = '';
+            ipt_n2.value = '';
+            ipt_n1.value = ''; 
+        }
     </script>
 </html>
