@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Colocar um fundo animado de batalha de rima -->
-     <!-- buttons interativos e partes aparecendo com animação -->
     <div class="corpo">
         <div class="header">
             <h1 class="titulo">⛈︎ GAMA - MACHINE ⛈︎</h1>
@@ -282,8 +280,8 @@
             let BaseResposta = ipt_base_resposta.value;
             let BaseRespostaTexto = 0
             let operacao = ipt_operacao.value;
-            let n1 = Number(ipt_n1.value);
-            let n2 = Number(ipt_n2.value);
+            let n1 = ipt_n1.value;
+            let n2 = ipt_n2.value;
 
             let ValorConversaoN1 = 0;
             let ValorConversaoN2 = 0;
@@ -320,6 +318,7 @@
                 BaseN2Texto = 8;
             } else if (BaseN2 == 'N2hexadecimal') {
                 ValorConversaoN2 = parseInt(n2, 16);
+                console.log(ValorConversaoN2)
                 BaseN2Texto = 16;
             } else {
                 return alert("Coloque uma base válida")
@@ -367,7 +366,6 @@
                 <span>=</span>
                 <span>${ValorResultado}<p>${BaseRespostaTexto}</p></span>
             </div>`
-
         }
         
         function limparCalculadora() {
